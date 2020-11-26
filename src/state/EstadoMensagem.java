@@ -1,5 +1,7 @@
 package state;
 
+import java.util.Date;
+
 /*
  * TODO STATE.02 
  * 
@@ -8,5 +10,21 @@ package state;
  * 3. Crie os subtipos, de acordo com estados referenciados em TODO.STATE.01.
  */
 public abstract class EstadoMensagem {
+
+	//-> Inathan
+
+	protected Mensagem mensagem;
+	protected Date data;
+
+	public EstadoMensagem(Mensagem mensagem) {
+		this.mensagem = mensagem;
+		this.data = new Date();
+	}
+
+	public abstract void enviar(String destinatario);
+		
+	public abstract void receber();
+
+	public abstract void arquivar(String solicitante);
 
 }

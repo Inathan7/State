@@ -26,14 +26,14 @@ public class Main {
 	 * 
 	 */
 	public static void main(String[] args) {
-		Mensagem mensagem = new Mensagem("Ol√°, tudo bem. Confirme que leu por favor!");
-//		mensagem.enviar("Fulano");//deve funcionar, veja as regras de transicao na clase Mensagem
-//		
+		Mensagem mensagem = new Mensagem("Ol·, tudo bem. Confirme que leu por favor!");
+		mensagem.enviar("Fulano");//deve funcionar, veja as regras de transicao na clase Mensagem
+		
 //		mensagem.enviar("Fulano");//nao deve funcionar
 //		mensagem.enviar("Cicrano");//nao deve funcionar
-//		mensagem.receber();//deve funcionar
+		mensagem.receber();//deve funcionar
 //		
-//		mensagem.enviar("Fulano");//nao deve funcionar
+		mensagem.enviar("Fulano");//nao deve funcionar
 //		mensagem.enviar("Cicrano");//deve funcionar
 //		
 //		mensagem.arquivar("Cicrano");//nao deve funcionar

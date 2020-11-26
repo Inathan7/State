@@ -1,5 +1,7 @@
 package state;
 
+import java.util.ArrayList;
+
 /*
  * TODO STATE.01
  * 
@@ -18,8 +20,11 @@ public class Mensagem {
 
 	private String mensagem;
 	
+	private ArrayList<EstadoMensagem> estados = new ArrayList<EstadoMensagem>();  //-> Inathan
+	
 	public Mensagem(String mensagem) {
 		this.mensagem = mensagem;
+		this.estados.add(new Criado(this));
 	}
 
 	public String getMensagem() {
@@ -29,6 +34,28 @@ public class Mensagem {
 	//nao deve ser chamado por clientes.
 	private void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
+	}
+	
+	//-> Inathan
+	
+	public EstadoMensagem getEstadoAtual() {
+		return this.estados.get(estados.size()-1);
+	}
+	
+	public void setEstadoAtual(EstadoMensagem novoEstado) {
+		this.estados.add(novoEstado);
+	}
+	
+	public void enviar(String destinatario) {
+		getEstadoAtual().enviar(destinatario);
+	}
+	
+	public void receber() {
+		getEstadoAtual().receber();
+	}
+	
+	public void arquivar(String solicitante) {
+		getEstadoAtual().arquivar(solicitante);
 	}
 	
 }
