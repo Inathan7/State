@@ -9,21 +9,24 @@ public class Arquivada extends EstadoMensagem {
 	}
 
 	@Override
-	public void enviar(String destinatario) {
-		// TODO Auto-generated method stub
-		
+	public String enviar(String remetente, String destinatario) {
+		this.setDestinatario(destinatario);
+		this.setRemetente(remetente);
+		EstadoMensagem proximoEstado = new AguardandoRecebimento(this.mensagem);
+		mensagem.setEstadoAtual(proximoEstado);
+		return "Mensagem enviada." + "\n" + data.getTime();
 	}
 
 	@Override
-	public void receber() {
-		// TODO Auto-generated method stub
-		
+	public String receber() {
+		EstadoMensagem proximoEstado = new Recebida(this.mensagem);
+		mensagem.setEstadoAtual(proximoEstado);
+		return "Mensagem recebida." + "\n" + data.getTime();
 	}
 
 	@Override
-	public void arquivar(String solicitante) {
-		// TODO Auto-generated method stub
-		
+	public String arquivar(String solicitante) {
+		throw new IllegalStateException("Já arquivada!");
 	}
 
 }

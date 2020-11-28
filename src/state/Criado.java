@@ -9,23 +9,24 @@ public class Criado extends EstadoMensagem {
 	}
 
 	@Override
-	public void enviar(String destinatario) {
-		System.out.println("Mensagem enviada para  " + destinatario + "\n" + data.getTime());
+	public String enviar(String remetente, String destinatario) {
+		this.setDestinatario(destinatario);
+		this.setRemetente(remetente);
 		EstadoMensagem proximoEstado = new AguardandoRecebimento(this.mensagem);
 		mensagem.setEstadoAtual(proximoEstado);
+		return "Mensagem enviada para  " + this.getDestinatario() + "\n" + data.getTime();
 	}
 
 	@Override
-	public void receber() {
-		System.out.println("Mensagem recebida." + "\n" + data.getTime());
+	public String receber() {
 		EstadoMensagem proximoEstado = new AguardandoRecebimento(this.mensagem);
 		mensagem.setEstadoAtual(proximoEstado);
+		return "Mensagem enviada para  " + this.getDestinatario() + "\n" + data.getTime();
 	}
 
 	@Override
-	public void arquivar(String solicitante) {
-		// TODO Auto-generated method stub
-
+	public String arquivar(String solicitante) {
+		throw new IllegalStateException("Impossível arquivar!");
 	}
 
 }

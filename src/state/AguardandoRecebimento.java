@@ -10,22 +10,21 @@ public class AguardandoRecebimento extends EstadoMensagem {
 	}
 
 	@Override
-	public void enviar(String destinatario) {
+	public String enviar(String remetente, String destinatario) {
 		throw new IllegalStateException("Aguardando recebimento... Impossível enviar!");
 	}
 
 	@Override
-	public void receber() {
-		System.out.println("Mensagem recebida." + "\n" + data.getTime());
+	public String receber() {
 		EstadoMensagem proximoEstado = new Recebida(this.mensagem);
 		mensagem.setEstadoAtual(proximoEstado);
+		return "Mensagem recebida." + "\n" + data.getTime();
 
 	}
 
 	@Override
-	public void arquivar(String solicitante) {
-		// TODO Auto-generated method stub
-
+	public String arquivar(String solicitante) {
+		throw new IllegalStateException("Aguardando recebimento... Impossível arquivar!");
 	}
 
 }

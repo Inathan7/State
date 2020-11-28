@@ -27,17 +27,19 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		Mensagem mensagem = new Mensagem("Olá, tudo bem. Confirme que leu por favor!");
-		mensagem.enviar("Fulano");//deve funcionar, veja as regras de transicao na clase Mensagem
+		System.out.println(mensagem.enviar("Killua","Fulano"));//deve funcionar, veja as regras de transicao na clase Mensagem
 		
 //		mensagem.enviar("Fulano");//nao deve funcionar
 //		mensagem.enviar("Cicrano");//nao deve funcionar
-		mensagem.receber();//deve funcionar
+		System.out.println(mensagem.receber());//deve funcionar
 //		
-		mensagem.enviar("Fulano");//nao deve funcionar
-//		mensagem.enviar("Cicrano");//deve funcionar
+//		mensagem.enviar("Fulano");//nao deve funcionar
+		System.out.println(mensagem.enviar("Miranha","Cicrano"));//deve funcionar
+		
+		System.out.println(mensagem.receber());
 //		
 //		mensagem.arquivar("Cicrano");//nao deve funcionar
-//		mensagem.arquivar("Fulano");//deve funcionar
+		System.out.println(mensagem.arquivar("Killua"));//deve funcionar
 	}
 	
 }

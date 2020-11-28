@@ -12,8 +12,10 @@ import java.util.ArrayList;
  * mas se pode receber() a mensagem, devendo se guardar a data do recebimento. 
  * 3. Logo que receber(), o objeto mensagem deve ser encontrar no estado "Recebida", em que 
  * deve ser possivel enviar(destinatario) desde que o proximo destinatario nao ja tenha recebido a mensagem anteriormente.
- * Somente estando tambem deve ser possivel arquivar(solicitante), ficando a mensagem no estado "Arquivada", mas somente o remetente original (do primeiro envio)
- * pode fazer isso, em que deve ser armazenada a data do arquivamento e um texto com o motivo.
+ * 
+ * Somente estando tambem deve ser possivel arquivar(solicitante), ficando a mensagem no estado "Arquivada", 
+ * mas somente o remetente original (do primeiro envio) pode fazer isso, em que deve ser armazenada a data do 
+ * arquivamento e um texto com o motivo.
  * 
  */
 public class Mensagem {
@@ -46,16 +48,24 @@ public class Mensagem {
 		this.estados.add(novoEstado);
 	}
 	
-	public void enviar(String destinatario) {
-		getEstadoAtual().enviar(destinatario);
+	public String enviar(String remetente, String destinatario) {
+		return getEstadoAtual().enviar(remetente, destinatario);
 	}
 	
-	public void receber() {
-		getEstadoAtual().receber();
+	public String receber() {
+		return getEstadoAtual().receber();
 	}
 	
-	public void arquivar(String solicitante) {
-		getEstadoAtual().arquivar(solicitante);
+	public String arquivar(String solicitante) {
+		return getEstadoAtual().arquivar(solicitante);
+	}
+
+	public ArrayList<EstadoMensagem> getEstados() {
+		return estados;
+	}
+
+	public void setEstados(ArrayList<EstadoMensagem> estados) {
+		this.estados = estados;
 	}
 	
 }

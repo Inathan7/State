@@ -15,16 +15,34 @@ public abstract class EstadoMensagem {
 
 	protected Mensagem mensagem;
 	protected Date data;
+	private String destinatario;
+	private String remetente;
 
 	public EstadoMensagem(Mensagem mensagem) {
 		this.mensagem = mensagem;
 		this.data = new Date();
 	}
 
-	public abstract void enviar(String destinatario);
+	public abstract String enviar(String remetente, String destinatario);
 		
-	public abstract void receber();
+	public abstract String receber();
 
-	public abstract void arquivar(String solicitante);
+	public abstract String arquivar(String solicitante);
+
+	public String getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(String destinatario) {
+		this.destinatario = destinatario;
+	}
+
+	public String getRemetente() {
+		return remetente;
+	}
+
+	public void setRemetente(String remetente) {
+		this.remetente = remetente;
+	}
 
 }

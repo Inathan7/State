@@ -9,23 +9,37 @@ public class Recebida extends EstadoMensagem {
 	}
 
 	@Override
-	public void enviar(String destinatario) {
-		
-		System.out.println("Mensagem enviada para  " + destinatario + "\n" + data.getTime());
-	//	EstadoMensagem proximoEstado = new Recebida(this.mensagem);
-	//	mensagem.setEstadoAtual(proximoEstado);
+	public String enviar(String remetente, String destinatario) {
+		String retorno = "";
+		for (int i = 0; i < mensagem.getEstados().size(); i++) {
+			if(mensagem.getEstados().get(i).getDestinatario() != null && mensagem.getEstados().get(i).getDestinatario().equals(destinatario)) {
+				throw new IllegalStateException("Destinatario já recebeu mensagem anteriormente... Impossível enviar!");
+			}else if(i==mensagem.getEstados().size()-1) {
+				this.setRemetente(remetente);
+				this.setDestinatario(destinatario);
+				EstadoMensagem proximoEstado = new AguardandoRecebimento(this.mensagem);
+				mensagem.setEstadoAtual(proximoEstado);
+				retorno = "Mensagem enviada para  " + this.getDestinatario() + "\n" + data.getTime();
+				break;
+			}
+			
+		}
+		return retorno;
 	}
 
 	@Override
-	public void receber() {
-		// TODO Auto-generated method stub
-		
+	public String receber() {
+		throw new IllegalStateException("Mensagem já recebida... Impossível receber!");
 	}
 
 	@Override
-	public void arquivar(String solicitante) {
-		// TODO Auto-generated method stub
-		
+	public String arquivar(String solicitante) {
+		if(mensagem.getEstados().get(0).getRemetente().equals(solicitante)) {
+			EstadoMensagem proximoEstado = new Arquivada(this.mensagem);
+			mensagem.setEstadoAtual(proximoEstado);
+			return "Mensagem arquivada." + "\n" + data.getTime();
+		}
+		throw new IllegalStateException("Solicitante não é remetente original... Impossível arquivar!");
 	}
 
 }
