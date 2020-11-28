@@ -1,7 +1,5 @@
 package state;
 
-// -> Inathan
-
 public class Criado extends EstadoMensagem {
 
 	public Criado(Mensagem mensagem) {

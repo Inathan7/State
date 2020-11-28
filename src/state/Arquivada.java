@@ -1,6 +1,5 @@
 package state;
 
-//-> Inathan
 
 public class Arquivada extends EstadoMensagem {
 

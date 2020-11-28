@@ -22,7 +22,7 @@ public class Mensagem {
 
 	private String mensagem;
 	
-	private ArrayList<EstadoMensagem> estados = new ArrayList<EstadoMensagem>();  //-> Inathan
+	private ArrayList<EstadoMensagem> estados = new ArrayList<EstadoMensagem>();
 	
 	public Mensagem(String mensagem) {
 		this.mensagem = mensagem;
@@ -37,8 +37,6 @@ public class Mensagem {
 	private void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
-	
-	//-> Inathan
 	
 	public EstadoMensagem getEstadoAtual() {
 		return this.estados.get(estados.size()-1);

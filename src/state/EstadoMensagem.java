@@ -11,8 +11,6 @@ import java.util.Date;
  */
 public abstract class EstadoMensagem {
 
-	//-> Inathan
-
 	protected Mensagem mensagem;
 	protected Date data;
 	private String destinatario;
